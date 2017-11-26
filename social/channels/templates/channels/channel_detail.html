@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{object.name}}</h1> <small>{{ object.category }}</small>
+    <p>{{object.description}}</p>
+    <a href="{% url 'projects:create' %}">Project Create</a>
+    <div class="row">
+      {% for project in view.channel_projects|slice:":5" %}
+        <div class="card channel-card m-2 col-3">
+          <img class="card-img-top" src="" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="{{ project.get_absolute_url }}">{{ project.title }}</a>
+            </h4>
+            <p class="card-text">{{ project.description }}</p>
+            {% if user.is_authenticated %}
+              <div class="card-footer bg-transparent">
+                <li><a href="">Delete Project</a></li>
+                <li><a href="">Edit Project</a></li>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

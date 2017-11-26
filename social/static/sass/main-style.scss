@@ -1,0 +1,11 @@
+//whole site styles
+
+@import "luvit-colors"; //colour pallet for the website
+@import "navbar";//all navbar options
+@import "text"; //controls text across whole website
+@import "buttons"; //controls all the buttons 
+
+//section specific styles
+
+///////channels
+@import "channel-cards"; //controls the channel homepage styles

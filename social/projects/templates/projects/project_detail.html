@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <h1>{{ object.title }}</h1>
+    <small>{{ object.channel }} - {{ object.user }}</small>
+    <hr>
+    <div class="row">
+      {{ object.description }}
+    </div>
+  </div>
+{% endblock %}
