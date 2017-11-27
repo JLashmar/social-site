@@ -1,3 +1,22 @@
 {% extends "base.html" %}
 
-<h1>{{object}}</h1>
+{% block content %}
+  <div class="container">
+    <h1>{{user.username}}</h1> {{user.account.bio}}
+    <hr>
+    <div class="row">
+      {% for channel in user.channel_set.all %}
+      <div class="col-sm-4">
+        <div class="card card-default">
+        <h4>{{channel.name}}</h4>
+          <ul>
+            {% for project in channel.project_set.all %}
+              <p>{{project.title}}</p>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

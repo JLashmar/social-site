@@ -14,7 +14,7 @@ class AccountDetailView(DetailView):
     template_name = 'accounts/user.html'
 
     def get_object(self):
-        username = self.kwargs.get('user')
+        username = self.kwargs.get("username")
         if username is None:
-            raise Htpp404
+            raise Http404
         return get_object_or_404(User, username__iexact=username, is_active=True)

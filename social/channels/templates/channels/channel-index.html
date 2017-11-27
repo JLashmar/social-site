@@ -6,7 +6,8 @@
     {% for obj in object_list %}
       {{obj.slug}}
       <li><a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></li>
-      <li> {{ obj.category }}</li>
+      <li><a href="{% url 'channels:category' obj.category %}">{{ obj.category }}</a></li>
+       
     {% endfor %}
   </div>
 {% endblock %}

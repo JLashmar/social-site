@@ -1,15 +1,30 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 
 # Create your views here.
 
 from .models import Channel
+from accounts.models import Account
 from projects.models import Project
 from .forms import ChannelCreateForm
+
+class ChannelFollowToggle(LoginRequiredMixin, View):
+    def post(self, request, *args, **kwargs):
+        #print(request.data)
+        #print(request.POST)
+        user_to_toggle = request.POST.get('user')
+        print(user_to_toggle)
+        account_ = Account.objects.get(user__username__iexact=user_to_toggle)
+        user = request.user
+        if user in account_.followers.all():
+            account_.followers.remove(user)
+        else:
+            account_.followers.add(user)
+        return redirect('/')
 
 class IndexView(ListView):
     queryset = Channel.objects.all()

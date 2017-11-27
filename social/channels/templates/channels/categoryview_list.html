@@ -4,8 +4,8 @@
   <div class="container">
     <h1>Hi</h1>
     {% for obj in object_list %}
-      <li>{{ obj.name }}</li>
-      <li> {{ obj.category }}</li>
+    <li><a href="{{ obj.get_absolute_url }}">{{ obj.name }}</a></li>
+    <li><a href="{% url 'channels:category' obj.category %}">{{ obj.category }}</a></li>
     {% endfor %}
   </div>
 {% endblock %}

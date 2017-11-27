@@ -19,10 +19,13 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
+from channels.views import ChannelFollowToggle
+
 urlpatterns = [
     url(r'^', include('channels.urls')),
     url(r'^projects/', include('projects.urls')),
     url(r'^account/', include('accounts.urls')),
+    url(r'^follow/', ChannelFollowToggle.as_view(), name='follow'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/', admin.site.urls),

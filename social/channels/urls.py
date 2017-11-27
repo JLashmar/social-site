@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^channel/create/$', ChannelCreateView.as_view(), name='create'),
     url(r'^channel/(?P<slug>[\w-]+)/edit$', ChannelUpdateView.as_view(), name='edit'),
     url(r'^channel/(?P<slug>[\w-]+)/$', ChannelDetailView.as_view(), name='detail'),
-    url(r'^category/(?P<category>\w+)/$', CategoryListView.as_view()),
+    url(r'^category/(?P<category>\w+)/$', CategoryListView.as_view(), name='category'),
 ]
